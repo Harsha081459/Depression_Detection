@@ -1,0 +1,50 @@
+{
+ "positive": {
+  "users": 81,
+  "median_writings": 383.0,
+  "mean_writings": 323.9753086419753,
+  "median_span_days": 721.6761805555556,
+  "share_span_under_9d": 0.024691358024691357,
+  "share_span_under_28d": 0.07407407407407407,
+  "share_span_over_365d": 0.6790123456790124,
+  "median_per_week_full": 3.0454105047695736,
+  "median_per_week_first28d": 4.5,
+  "median_per_week_first84d": 3.833333333333334,
+  "share_with_3x_rise_between_28d_windows": 0.7901234567901234,
+  "share_with_3x_drop_between_28d_windows": 0.8395061728395061,
+  "users_with_2plus_28d_windows": 74,
+  "share_disclosing": 0.8641975308641975,
+  "median_first_disclosure_day": 71.66320023148148,
+  "share_disclosing_within_28d": 0.345679012345679,
+  "share_disclosing_within_84d": 0.4691358024691358
+ },
+ "control": {
+  "users": 337,
+  "median_writings": 337.0,
+  "mean_writings": 304.0118694362018,
+  "median_span_days": 264.63939814814813,
+  "share_span_under_9d": 0.06824925816023739,
+  "share_span_under_28d": 0.1632047477744807,
+  "share_span_over_365d": 0.4035608308605341,
+  "median_per_week_full": 6.542497437137889,
+  "median_per_week_first28d": 5.0,
+  "median_per_week_first84d": 4.0,
+  "share_with_3x_rise_between_28d_windows": 0.5519287833827893,
+  "share_with_3x_drop_between_28d_windows": 0.5281899109792285,
+  "users_with_2plus_28d_windows": 258,
+  "share_disclosing": 0.04154302670623145,
+  "median_first_disclosure_day": 209.63619791666667,
+  "share_disclosing_within_28d": 0.008902077151335312,
+  "share_disclosing_within_84d": 0.011869436201780416
+ },
+ "mannwhitney_p": {
+  "rate_full": 0.0005858719938954374,
+  "rate_28": 0.2697261169460643,
+  "rate_84": 0.19739022820832253,
+  "n": 0.9012475653810967
+ },
+ "share_of_writings_after_day84": {
+  "positive": 0.7047100068592332,
+  "control": 0.5293503299105923
+ }
+}

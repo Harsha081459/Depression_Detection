@@ -1,0 +1,67 @@
+{
+ "self_blame": {
+  "alpha": 3.0,
+  "alpha_grid": [
+   3.0,
+   10.0,
+   30.0,
+   100.0
+  ],
+  "spearman_all_writings": 0.2577218213951255,
+  "pearson_logit": 0.5563861540230243,
+  "auroc_vs_qwen_yes": 0.9888083318948157,
+  "qwen_yes_rate": 0.006431695394906097
+ },
+ "helplessness": {
+  "alpha": 10.0,
+  "alpha_grid": [
+   3.0,
+   10.0,
+   30.0,
+   100.0
+  ],
+  "spearman_all_writings": 0.3712868803121364,
+  "pearson_logit": 0.5441442176358516,
+  "auroc_vs_qwen_yes": 0.9531430913031553,
+  "qwen_yes_rate": 0.013978217991595918
+ },
+ "isolation": {
+  "alpha": 10.0,
+  "alpha_grid": [
+   3.0,
+   10.0,
+   30.0,
+   100.0
+  ],
+  "spearman_all_writings": 0.24666371962778672,
+  "pearson_logit": 0.42666735133915756,
+  "auroc_vs_qwen_yes": 0.9399634313301628,
+  "qwen_yes_rate": 0.008232570105479805
+ },
+ "family_strain": {
+  "alpha": 3.0,
+  "alpha_grid": [
+   3.0,
+   10.0,
+   30.0,
+   100.0
+  ],
+  "spearman_all_writings": 0.397026485176469,
+  "pearson_logit": 0.6177512304085241,
+  "auroc_vs_qwen_yes": 0.9231958002976094,
+  "qwen_yes_rate": 0.03301603636051797
+ },
+ "emptiness": {
+  "alpha": 3.0,
+  "alpha_grid": [
+   3.0,
+   10.0,
+   30.0,
+   100.0
+  ],
+  "spearman_all_writings": 0.2291467577919434,
+  "pearson_logit": 0.4786463221027283,
+  "auroc_vs_qwen_yes": 0.9609715977629125,
+  "qwen_yes_rate": 0.004716576622931138
+ }
+}

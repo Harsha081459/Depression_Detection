@@ -1,0 +1,788 @@
+{
+  "users": 523,
+  "positives": 91,
+  "fixed_features": [
+    "self_blame",
+    "helpless",
+    "emptiness",
+    "isolation",
+    "family_strain",
+    "absolutist",
+    "polarity_flip",
+    "polarity_jump",
+    "distress_burst"
+  ],
+  "candidates": [
+    "self_blame",
+    "helpless",
+    "emptiness",
+    "isolation",
+    "family_strain",
+    "absolutist",
+    "polarity_flip",
+    "polarity_jump",
+    "distress_burst",
+    "first_person",
+    "night",
+    "silence",
+    "profanity"
+  ],
+  "disclosure_writings": 610,
+  "note": "Fixed features were screened on the full cohort, so that CV is optimistic. Nested selection is fit inside each training fold. Neither number is a clinical result.",
+  "univariate": {
+    "4w": {
+      "unmasked": {
+        "self_blame": {
+          "auroc": 0.6880977818477818,
+          "average_precision": 0.36996575714452024
+        },
+        "helpless": {
+          "auroc": 0.6858974358974359,
+          "average_precision": 0.3893756622616854
+        },
+        "emptiness": {
+          "auroc": 0.6484152421652422,
+          "average_precision": 0.3290769016463963
+        },
+        "isolation": {
+          "auroc": 0.6900310337810338,
+          "average_precision": 0.39881281239731337
+        },
+        "family_strain": {
+          "auroc": 0.7191570004070004,
+          "average_precision": 0.44730949536536474
+        },
+        "absolutist": {
+          "auroc": 0.7284162596662597,
+          "average_precision": 0.4567880105969189
+        },
+        "polarity_flip": {
+          "auroc": 0.6918116605616605,
+          "average_precision": 0.45576999776869187
+        },
+        "polarity_jump": {
+          "auroc": 0.7630621693121693,
+          "average_precision": 0.44255401036065495
+        },
+        "distress_burst": {
+          "auroc": 0.6946479446479445,
+          "average_precision": 0.30765656648404505
+        },
+        "first_person": {
+          "auroc": 0.7440221815221815,
+          "average_precision": 0.3654243911176978
+        },
+        "night": {
+          "auroc": 0.5994225681725681,
+          "average_precision": 0.22440682443813126
+        },
+        "silence": {
+          "auroc": 0.5695970695970697,
+          "average_precision": 0.23158764229927575
+        },
+        "profanity": {
+          "auroc": 0.6209427146927148,
+          "average_precision": 0.2437658187207385
+        }
+      },
+      "masked": {
+        "self_blame": {
+          "auroc": 0.6567714692714692,
+          "average_precision": 0.329898073317039
+        },
+        "helpless": {
+          "auroc": 0.6597603785103786,
+          "average_precision": 0.3431995387130368
+        },
+        "emptiness": {
+          "auroc": 0.6415852665852666,
+          "average_precision": 0.31313735596374037
+        },
+        "isolation": {
+          "auroc": 0.6851851851851852,
+          "average_precision": 0.39583385215535405
+        },
+        "family_strain": {
+          "auroc": 0.6889880952380952,
+          "average_precision": 0.3928277884965161
+        },
+        "absolutist": {
+          "auroc": 0.7083078958078958,
+          "average_precision": 0.4142502241467755
+        },
+        "polarity_flip": {
+          "auroc": 0.6740181115181115,
+          "average_precision": 0.42850511552857523
+        },
+        "polarity_jump": {
+          "auroc": 0.7623753561253561,
+          "average_precision": 0.4351576195604698
+        },
+        "distress_burst": {
+          "auroc": 0.6830357142857142,
+          "average_precision": 0.2993312633039294
+        },
+        "first_person": {
+          "auroc": 0.7208613146113148,
+          "average_precision": 0.3445737030702545
+        },
+        "night": {
+          "auroc": 0.5862713675213675,
+          "average_precision": 0.21377214032108321
+        },
+        "silence": {
+          "auroc": 0.5591676841676841,
+          "average_precision": 0.22650304391007126
+        },
+        "profanity": {
+          "auroc": 0.6039631664631664,
+          "average_precision": 0.2319039720413203
+        }
+      },
+      "before_disclosure": {
+        "self_blame": {
+          "auroc": 0.5985449735449736,
+          "average_precision": 0.2873573408639103
+        },
+        "helpless": {
+          "auroc": 0.6099028286528287,
+          "average_precision": 0.30705750525806874
+        },
+        "emptiness": {
+          "auroc": 0.5924908424908425,
+          "average_precision": 0.282139037838389
+        },
+        "isolation": {
+          "auroc": 0.6212734025234026,
+          "average_precision": 0.3204709632377995
+        },
+        "family_strain": {
+          "auroc": 0.6274165649165651,
+          "average_precision": 0.3277098662807092
+        },
+        "absolutist": {
+          "auroc": 0.669541107041107,
+          "average_precision": 0.3842258444165758
+        },
+        "polarity_flip": {
+          "auroc": 0.616427553927554,
+          "average_precision": 0.34630580399363753
+        },
+        "polarity_jump": {
+          "auroc": 0.6919897232397233,
+          "average_precision": 0.3678586913470442
+        },
+        "distress_burst": {
+          "auroc": 0.6267424704924706,
+          "average_precision": 0.2376700296602624
+        },
+        "first_person": {
+          "auroc": 0.6591753154253154,
+          "average_precision": 0.316395984661303
+        },
+        "night": {
+          "auroc": 0.5645477207977208,
+          "average_precision": 0.21493546982600803
+        },
+        "silence": {
+          "auroc": 0.5246235246235246,
+          "average_precision": 0.2036405942101491
+        },
+        "profanity": {
+          "auroc": 0.5799374236874237,
+          "average_precision": 0.2286418689964516
+        }
+      }
+    },
+    "12w": {
+      "unmasked": {
+        "self_blame": {
+          "auroc": 0.7597934472934472,
+          "average_precision": 0.47275195135648984
+        },
+        "helpless": {
+          "auroc": 0.7286197598697599,
+          "average_precision": 0.4172614768503018
+        },
+        "emptiness": {
+          "auroc": 0.7051536426536427,
+          "average_precision": 0.4139870105468419
+        },
+        "isolation": {
+          "auroc": 0.7186609686609687,
+          "average_precision": 0.414205122153512
+        },
+        "family_strain": {
+          "auroc": 0.7688746438746438,
+          "average_precision": 0.4980009196927607
+        },
+        "absolutist": {
+          "auroc": 0.7516788766788767,
+          "average_precision": 0.4656986261066664
+        },
+        "polarity_flip": {
+          "auroc": 0.7423814611314612,
+          "average_precision": 0.4922841311716385
+        },
+        "polarity_jump": {
+          "auroc": 0.7894154456654456,
+          "average_precision": 0.505455282933461
+        },
+        "distress_burst": {
+          "auroc": 0.705993080993081,
+          "average_precision": 0.3329895465332765
+        },
+        "first_person": {
+          "auroc": 0.7537901912901912,
+          "average_precision": 0.3903608432564918
+        },
+        "night": {
+          "auroc": 0.5975529100529102,
+          "average_precision": 0.23058996406544502
+        },
+        "silence": {
+          "auroc": 0.6140873015873015,
+          "average_precision": 0.24807703326552802
+        },
+        "profanity": {
+          "auroc": 0.6639957264957265,
+          "average_precision": 0.2669250989304213
+        }
+      },
+      "masked": {
+        "self_blame": {
+          "auroc": 0.7322954822954824,
+          "average_precision": 0.4314909661579176
+        },
+        "helpless": {
+          "auroc": 0.713764245014245,
+          "average_precision": 0.3900302843563055
+        },
+        "emptiness": {
+          "auroc": 0.7035510785510786,
+          "average_precision": 0.397621539641728
+        },
+        "isolation": {
+          "auroc": 0.7138024013024014,
+          "average_precision": 0.40823833039958546
+        },
+        "family_strain": {
+          "auroc": 0.7495039682539681,
+          "average_precision": 0.45989253501298083
+        },
+        "absolutist": {
+          "auroc": 0.7369505494505495,
+          "average_precision": 0.433212673754032
+        },
+        "polarity_flip": {
+          "auroc": 0.7294591982091981,
+          "average_precision": 0.4663837007120639
+        },
+        "polarity_jump": {
+          "auroc": 0.7879655067155067,
+          "average_precision": 0.49334283740980944
+        },
+        "distress_burst": {
+          "auroc": 0.6998244810744811,
+          "average_precision": 0.3290961418814962
+        },
+        "first_person": {
+          "auroc": 0.7366071428571429,
+          "average_precision": 0.3687522385757648
+        },
+        "night": {
+          "auroc": 0.5933811558811559,
+          "average_precision": 0.22910825952909025
+        },
+        "silence": {
+          "auroc": 0.609025234025234,
+          "average_precision": 0.24540561536800606
+        },
+        "profanity": {
+          "auroc": 0.6470034595034594,
+          "average_precision": 0.2554548789289821
+        }
+      },
+      "before_disclosure": {
+        "self_blame": {
+          "auroc": 0.6258903133903134,
+          "average_precision": 0.3346540418763521
+        },
+        "helpless": {
+          "auroc": 0.6298331298331298,
+          "average_precision": 0.3234032430121413
+        },
+        "emptiness": {
+          "auroc": 0.6334834147334147,
+          "average_precision": 0.3390919893073874
+        },
+        "isolation": {
+          "auroc": 0.6293879731379731,
+          "average_precision": 0.3249174742412714
+        },
+        "family_strain": {
+          "auroc": 0.6609686609686609,
+          "average_precision": 0.3593103934865851
+        },
+        "absolutist": {
+          "auroc": 0.6896621896621897,
+          "average_precision": 0.402140254314828
+        },
+        "polarity_flip": {
+          "auroc": 0.6356456043956044,
+          "average_precision": 0.3538769562503326
+        },
+        "polarity_jump": {
+          "auroc": 0.7012489824989826,
+          "average_precision": 0.41025364731960445
+        },
+        "distress_burst": {
+          "auroc": 0.6142526455026454,
+          "average_precision": 0.23230480631577494
+        },
+        "first_person": {
+          "auroc": 0.6608160358160358,
+          "average_precision": 0.3391702200201449
+        },
+        "night": {
+          "auroc": 0.5576414326414326,
+          "average_precision": 0.22640614311834695
+        },
+        "silence": {
+          "auroc": 0.5404456654456654,
+          "average_precision": 0.20288280616733947
+        },
+        "profanity": {
+          "auroc": 0.6035816035816036,
+          "average_precision": 0.23951290727727087
+        }
+      }
+    },
+    "full": {
+      "unmasked": {
+        "self_blame": {
+          "auroc": 0.8613400488400489,
+          "average_precision": 0.5821791656671258
+        },
+        "helpless": {
+          "auroc": 0.8509996947496947,
+          "average_precision": 0.5169330542330451
+        },
+        "emptiness": {
+          "auroc": 0.8639473951973953,
+          "average_precision": 0.562750716360056
+        },
+        "isolation": {
+          "auroc": 0.8507834757834758,
+          "average_precision": 0.5422482193142225
+        },
+        "family_strain": {
+          "auroc": 0.882287851037851,
+          "average_precision": 0.5841060454184387
+        },
+        "absolutist": {
+          "auroc": 0.8783068783068784,
+          "average_precision": 0.5779767381281837
+        },
+        "polarity_flip": {
+          "auroc": 0.8614799552299552,
+          "average_precision": 0.6002708489547586
+        },
+        "polarity_jump": {
+          "auroc": 0.8694037444037443,
+          "average_precision": 0.5856394865530199
+        },
+        "distress_burst": {
+          "auroc": 0.7754502442002441,
+          "average_precision": 0.3564726179283695
+        },
+        "first_person": {
+          "auroc": 0.7962962962962963,
+          "average_precision": 0.44896181926793094
+        },
+        "night": {
+          "auroc": 0.6618462555962557,
+          "average_precision": 0.26517863321016943
+        },
+        "silence": {
+          "auroc": 0.7242063492063492,
+          "average_precision": 0.32452504927001846
+        },
+        "profanity": {
+          "auroc": 0.707977207977208,
+          "average_precision": 0.27287122725598045
+        }
+      },
+      "masked": {
+        "self_blame": {
+          "auroc": 0.8260073260073261,
+          "average_precision": 0.5214062727017817
+        },
+        "helpless": {
+          "auroc": 0.8311202686202687,
+          "average_precision": 0.4866688701115116
+        },
+        "emptiness": {
+          "auroc": 0.855171448921449,
+          "average_precision": 0.5320409976484873
+        },
+        "isolation": {
+          "auroc": 0.8354319291819292,
+          "average_precision": 0.5122667396524887
+        },
+        "family_strain": {
+          "auroc": 0.8537851037851037,
+          "average_precision": 0.5343648858477265
+        },
+        "absolutist": {
+          "auroc": 0.8418803418803419,
+          "average_precision": 0.5261064553666218
+        },
+        "polarity_flip": {
+          "auroc": 0.8459249084249084,
+          "average_precision": 0.563861043646797
+        },
+        "polarity_jump": {
+          "auroc": 0.8642908017908018,
+          "average_precision": 0.5633391372716086
+        },
+        "distress_burst": {
+          "auroc": 0.7687347374847375,
+          "average_precision": 0.35326037908595204
+        },
+        "first_person": {
+          "auroc": 0.7803724053724053,
+          "average_precision": 0.4209728060403512
+        },
+        "night": {
+          "auroc": 0.6638303825803825,
+          "average_precision": 0.271105904317508
+        },
+        "silence": {
+          "auroc": 0.7159645909645909,
+          "average_precision": 0.32073545303654966
+        },
+        "profanity": {
+          "auroc": 0.6909595034595034,
+          "average_precision": 0.26544183569013313
+        }
+      },
+      "before_disclosure": {
+        "self_blame": {
+          "auroc": 0.6476139601139601,
+          "average_precision": 0.369948497448789
+        },
+        "helpless": {
+          "auroc": 0.680911680911681,
+          "average_precision": 0.398561002951625
+        },
+        "emptiness": {
+          "auroc": 0.7067562067562068,
+          "average_precision": 0.4377958444218597
+        },
+        "isolation": {
+          "auroc": 0.6672135734635735,
+          "average_precision": 0.39435509476951647
+        },
+        "family_strain": {
+          "auroc": 0.6780626780626782,
+          "average_precision": 0.38595362314022047
+        },
+        "absolutist": {
+          "auroc": 0.7475452787952789,
+          "average_precision": 0.4825130334158502
+        },
+        "polarity_flip": {
+          "auroc": 0.6959071021571022,
+          "average_precision": 0.41579051905548425
+        },
+        "polarity_jump": {
+          "auroc": 0.7378027065527066,
+          "average_precision": 0.5057197799649793
+        },
+        "distress_burst": {
+          "auroc": 0.5757656695156695,
+          "average_precision": 0.21541081077929658
+        },
+        "first_person": {
+          "auroc": 0.7053698616198617,
+          "average_precision": 0.40833460604594896
+        },
+        "night": {
+          "auroc": 0.563034188034188,
+          "average_precision": 0.28374524065978746
+        },
+        "silence": {
+          "auroc": 0.5671677859177859,
+          "average_precision": 0.20401981337444092
+        },
+        "profanity": {
+          "auroc": 0.6049043549043549,
+          "average_precision": 0.2575645853513722
+        }
+      }
+    }
+  },
+  "models": {
+    "fixed": {
+      "4w": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.7248931623931624,
+            "average_precision": 0.47904568509784073
+          },
+          "random_forest": {
+            "auroc": 0.7918320105820106,
+            "average_precision": 0.5690406393528633
+          },
+          "logistic": {
+            "auroc": 0.7688619251119251,
+            "average_precision": 0.5285377719536636
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.7207086894586895,
+            "average_precision": 0.4640814464592786
+          },
+          "random_forest": {
+            "auroc": 0.7747507122507122,
+            "average_precision": 0.529044575441626
+          },
+          "logistic": {
+            "auroc": 0.7499109686609685,
+            "average_precision": 0.49167261213125457
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.6848799348799349,
+            "average_precision": 0.3661776623505101
+          },
+          "random_forest": {
+            "auroc": 0.719284188034188,
+            "average_precision": 0.3997232456715144
+          },
+          "logistic": {
+            "auroc": 0.6840659340659342,
+            "average_precision": 0.41202900337605675
+          }
+        }
+      },
+      "8w": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.7577838827838828,
+            "average_precision": 0.5268831748942195
+          },
+          "random_forest": {
+            "auroc": 0.7898606023606024,
+            "average_precision": 0.5807933858162396
+          },
+          "logistic": {
+            "auroc": 0.7753612128612128,
+            "average_precision": 0.5108942903068305
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.7381079568579569,
+            "average_precision": 0.4991346466301757
+          },
+          "random_forest": {
+            "auroc": 0.7729064916564917,
+            "average_precision": 0.5512799496384977
+          },
+          "logistic": {
+            "auroc": 0.7550239112739112,
+            "average_precision": 0.46517294950572574
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.6838242775742777,
+            "average_precision": 0.37216515271756456
+          },
+          "random_forest": {
+            "auroc": 0.7338471713471713,
+            "average_precision": 0.42550830321009037
+          },
+          "logistic": {
+            "auroc": 0.6893442205942206,
+            "average_precision": 0.396529985637756
+          }
+        }
+      },
+      "12w": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.8071835571835572,
+            "average_precision": 0.5667719004805933
+          },
+          "random_forest": {
+            "auroc": 0.8364875864875865,
+            "average_precision": 0.6184063893890897
+          },
+          "logistic": {
+            "auroc": 0.7888939763939764,
+            "average_precision": 0.559936371816042
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.8035714285714287,
+            "average_precision": 0.5757797789207837
+          },
+          "random_forest": {
+            "auroc": 0.831692612942613,
+            "average_precision": 0.6098454217875149
+          },
+          "logistic": {
+            "auroc": 0.7673992673992674,
+            "average_precision": 0.5146667646163906
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.7270171957671958,
+            "average_precision": 0.4173279374688001
+          },
+          "random_forest": {
+            "auroc": 0.776048026048026,
+            "average_precision": 0.4589309091869943
+          },
+          "logistic": {
+            "auroc": 0.6979293854293854,
+            "average_precision": 0.41601416325423546
+          }
+        }
+      },
+      "full": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.8897792022792023,
+            "average_precision": 0.6997637820458181
+          },
+          "random_forest": {
+            "auroc": 0.8956043956043956,
+            "average_precision": 0.7186957373557125
+          },
+          "logistic": {
+            "auroc": 0.9048890923890924,
+            "average_precision": 0.6424844506148091
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.8724562474562474,
+            "average_precision": 0.6760401281970564
+          },
+          "random_forest": {
+            "auroc": 0.8787138787138787,
+            "average_precision": 0.6833974148682593
+          },
+          "logistic": {
+            "auroc": 0.8933150183150184,
+            "average_precision": 0.5998200018455186
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.7429029304029304,
+            "average_precision": 0.4560974191292855
+          },
+          "random_forest": {
+            "auroc": 0.773695054945055,
+            "average_precision": 0.4563099292488574
+          },
+          "logistic": {
+            "auroc": 0.760340354090354,
+            "average_precision": 0.5008087633220797
+          }
+        }
+      }
+    },
+    "nested": {
+      "4w": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.7978098290598291,
+            "average_precision": 0.5482233162835667
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.7860195360195359,
+            "average_precision": 0.5522359245238616
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.7306166056166057,
+            "average_precision": 0.417106990875097
+          }
+        }
+      },
+      "8w": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.7904456654456654,
+            "average_precision": 0.5729994084980289
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.7909162596662597,
+            "average_precision": 0.6034007973393017
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.7404227716727717,
+            "average_precision": 0.44818970370822336
+          }
+        }
+      },
+      "12w": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.8422237484737485,
+            "average_precision": 0.6191585247488872
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.8394892144892145,
+            "average_precision": 0.6230535242959668
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.7777777777777778,
+            "average_precision": 0.4592642907020629
+          }
+        }
+      },
+      "full": {
+        "unmasked": {
+          "xgboost": {
+            "auroc": 0.8837505087505088,
+            "average_precision": 0.6243848840991635
+          }
+        },
+        "masked": {
+          "xgboost": {
+            "auroc": 0.8666056166056166,
+            "average_precision": 0.574740427617532
+          }
+        },
+        "before_disclosure": {
+          "xgboost": {
+            "auroc": 0.7841753154253153,
+            "average_precision": 0.45893133380254225
+          }
+        }
+      }
+    }
+  }
+}

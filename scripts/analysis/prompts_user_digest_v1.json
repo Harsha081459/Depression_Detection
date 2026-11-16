@@ -1,0 +1,48 @@
+{
+  "prompt_set": "user_digest_v1",
+  "status": "draft; freeze before the first cohort score",
+  "model": "qwen2.5:7b-instruct",
+  "expected_digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+  "k_writings": 12,
+  "max_chars_per_writing": 600,
+  "options": {"temperature": 0, "num_predict": 1, "num_ctx": 4096, "seed": 42, "num_batch": 512},
+  "system": "You are reading several social media writings by one person for a research study.\nJudge only what the writer says about themselves and their own life across these writings.\nIgnore jokes, games, fiction, quotes and advice to other people.\nAnswer with exactly one word: Yes or No.",
+  "signals": {
+    "low_mood": {
+      "yes": "describe feeling sad, down, or low on more than one occasion",
+      "no": "sadness appears only once, only about a game, film or news event, or only about someone else"
+    },
+    "anhedonia": {
+      "yes": "describe losing interest or pleasure in things they used to enjoy, or that nothing feels worth doing",
+      "no": "they are only bored with one specific game, show or task"
+    },
+    "hopelessness": {
+      "yes": "express hopelessness about their own future, or believe things will not get better",
+      "no": "it is pessimism about politics, sport, the economy or other people"
+    },
+    "worthlessness": {
+      "yes": "describe themselves as worthless, a failure as a person, a burden, or feel excessive guilt",
+      "no": "they only criticise their performance in a game or a single task"
+    },
+    "fatigue_sleep": {
+      "yes": "describe ongoing low energy, exhaustion, or trouble sleeping that affects their days",
+      "no": "it is ordinary tiredness after one long day"
+    },
+    "death_thoughts": {
+      "yes": "express thoughts about death, not wanting to be alive, or wanting to disappear",
+      "no": "death appears only in games, films, news, or about someone else"
+    },
+    "withdrawal": {
+      "yes": "describe feeling alone, avoiding people, or having no one to talk to",
+      "no": "they happily choose time alone"
+    },
+    "overall": {
+      "yes": "show a pattern of persistent low mood or loss of interest, together with other difficulties such as hopelessness, low self-worth, fatigue or withdrawal",
+      "no": "the writings are mostly about hobbies, games, news, opinions or everyday life without persistent low mood"
+    },
+    "off_topic": {
+      "yes": "write mostly about hobbies, games, media, news or other topics rather than their own feelings",
+      "no": "they write mostly about their own feelings or personal life"
+    }
+  }
+}

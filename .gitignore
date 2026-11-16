@@ -1,0 +1,37 @@
+# environment
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# raw and derived user-level data (data-use agreement) — never committed
+data/raw/**
+data/processed/**
+data/intake/**
+!data/**/.gitkeep
+private/
+private_external*/
+human_review/
+human_eval/
+Organized_Research/
+share_with_teammates/
+
+# score-level and private artefacts
+*_PRIVATE.*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.parquet
+research_v8/results/external_eval.lock
+
+# user-level / derived tables — aggregate metrics only
+results/**/*.csv
+results/**/sample_positive_ids.json
+
+# noise
+*.log
+*.zip
+.DS_Store

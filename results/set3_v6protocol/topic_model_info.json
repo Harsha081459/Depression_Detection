@@ -1,0 +1,287 @@
+{
+ "topic_top_words": {
+  "t00": [
+   "feel",
+   "people",
+   "ve",
+   "life",
+   "think",
+   "want",
+   "things",
+   "really"
+  ],
+  "t01": [
+   "que",
+   "um",
+   "para",
+   "se",
+   "mais",
+   "en",
+   "uma",
+   "com"
+  ],
+  "t02": [
+   "contains",
+   "supported",
+   "comments",
+   "click",
+   "content",
+   "reddit",
+   "view",
+   "post"
+  ],
+  "t03": [
+   "trump",
+   "climate",
+   "said",
+   "federal",
+   "president",
+   "india",
+   "news",
+   "new"
+  ],
+  "t04": [
+   "love",
+   "great",
+   "beautiful",
+   "baby",
+   "feet",
+   "got",
+   "heart",
+   "fuck"
+  ],
+  "t05": [
+   "ko",
+   "na",
+   "ako",
+   "sa",
+   "po",
+   "lang",
+   "yung",
+   "je"
+  ],
+  "t06": [
+   "think",
+   "people",
+   "actually",
+   "doesn",
+   "make",
+   "way",
+   "does",
+   "ve"
+  ],
+  "t07": [
+   "und",
+   "die",
+   "ich",
+   "der",
+   "das",
+   "ein",
+   "nicht",
+   "zu"
+  ],
+  "t08": [
+   "im",
+   "dont",
+   "ty",
+   "maybe",
+   "thats",
+   "yea",
+   "ive",
+   "bro"
+  ],
+  "t09": [
+   "che",
+   "di",
+   "il",
+   "hai",
+   "non",
+   "ho",
+   "ma",
+   "mi"
+  ],
+  "t10": [
+   "friday",
+   "black",
+   "deals",
+   "sale",
+   "men",
+   "link",
+   "price",
+   "deal"
+  ],
+  "t11": [
+   "nice",
+   "cock",
+   "enjoy",
+   "oh",
+   "haha",
+   "seriously",
+   "tho",
+   "altar"
+  ],
+  "t12": [
+   "lol",
+   "right",
+   "yes",
+   "honestly",
+   "fun",
+   "ph",
+   "cat",
+   "number"
+  ],
+  "t13": [
+   "ur",
+   "dude",
+   "correct",
+   "did",
+   "hermit",
+   "user",
+   "trading",
+   "ofc"
+  ],
+  "t14": [
+   "game",
+   "games",
+   "players",
+   "bought",
+   "team",
+   "playing",
+   "good",
+   "dropped"
+  ],
+  "t15": [
+   "instagram",
+   "update",
+   "art",
+   "twitter",
+   "source",
+   "fan",
+   "lil",
+   "video"
+  ],
+  "t16": [
+   "dm",
+   "offering",
+   "looking",
+   "shiny",
+   "friends",
+   "sure",
+   "lonely",
+   "page"
+  ],
+  "t17": [
+   "thanks",
+   "thank",
+   "got",
+   "did",
+   "yeah",
+   "tickets",
+   "appreciate",
+   "giphy"
+  ],
+  "t18": [
+   "vs",
+   "poll",
+   "wins",
+   "spawn",
+   "performed",
+   "vote",
+   "bot",
+   "automatically"
+  ],
+  "t19": [
+   "removed",
+   "moderator",
+   "steam",
+   "account",
+   "suddenly",
+   "dip",
+   "online",
+   "ebay"
+  ]
+ },
+ "topic_mean_by_label": {
+  "t00": {
+   "positive": 0.29647242406022306,
+   "control": 0.061175871591445975
+  },
+  "t01": {
+   "positive": 0.002115217097277555,
+   "control": 0.03505095377823858
+  },
+  "t02": {
+   "positive": 0.015644947380898392,
+   "control": 0.041967163093418976
+  },
+  "t03": {
+   "positive": 0.021392550190187015,
+   "control": 0.05520477280732506
+  },
+  "t04": {
+   "positive": 0.0570662102505127,
+   "control": 0.07989589569629268
+  },
+  "t05": {
+   "positive": 0.006368482972133484,
+   "control": 0.02266624000850317
+  },
+  "t06": {
+   "positive": 0.17006285772503793,
+   "control": 0.12530785684061943
+  },
+  "t07": {
+   "positive": 0.022390837596234954,
+   "control": 0.01513864926717512
+  },
+  "t08": {
+   "positive": 0.04479201715198093,
+   "control": 0.03908175629606099
+  },
+  "t09": {
+   "positive": 0.007728520816748102,
+   "control": 0.03099371829917252
+  },
+  "t10": {
+   "positive": 0.024871746293465745,
+   "control": 0.050955279698193
+  },
+  "t11": {
+   "positive": 0.02982273019571134,
+   "control": 0.029215011450093326
+  },
+  "t12": {
+   "positive": 0.059167030711182664,
+   "control": 0.04068683411004706
+  },
+  "t13": {
+   "positive": 0.028406209641346665,
+   "control": 0.0346528136990773
+  },
+  "t14": {
+   "positive": 0.04582841017670399,
+   "control": 0.06687303405913647
+  },
+  "t15": {
+   "positive": 0.023250055673397153,
+   "control": 0.04433174070375756
+  },
+  "t16": {
+   "positive": 0.02073971125662723,
+   "control": 0.03281644708701776
+  },
+  "t17": {
+   "positive": 0.06068172077432329,
+   "control": 0.10700389177334824
+  },
+  "t18": {
+   "positive": 0.005748025517863679,
+   "control": 0.03637932937569235
+  },
+  "t19": {
+   "positive": 0.035472272540122085,
+   "control": 0.043658295920939984
+  }
+ },
+ "topic_only_mean_pooled_all523": 0.8003968253968254
+}

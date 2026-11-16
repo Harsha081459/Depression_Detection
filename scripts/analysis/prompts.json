@@ -1,0 +1,32 @@
+{
+  "prompt_version": 0,
+  "status": "development; freeze version 1 only after the human development pilot",
+  "model": "qwen2.5:7b-instruct",
+  "expected_digest": "845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e",
+  "max_chars": 2000,
+  "options": {"temperature": 0, "num_predict": 1, "num_ctx": 2048, "seed": 42, "num_batch": 512},
+  "cache_policy": "erase_before_each_call",
+  "system": "You are labelling one social media post for a research study.\nJudge only what the writer says about themselves in this post.\nDo not guess about their life beyond the post.\nAnswer with exactly one word: Yes or No.",
+  "signals": {
+    "self_blame": {
+      "yes": "express a negative belief about their own value as a person, such as being worthless, a failure as a person, stupid, or a burden to others, or express personal shame, guilt, or responsibility for harm",
+      "no": "they only describe poor performance in a game, sport, level, or practical task; they blame someone else; it is a joke about a small slip; they describe another person. Failing a game or hating a level does not express a belief about their value as a person"
+    },
+    "helplessness": {
+      "yes": "feel powerless, hopeless, stuck, or trapped; say nothing they do will change their situation; say they cannot cope or need help to get through",
+      "no": "it is a practical or technical question; a game is hard; it is frustration with one task they are still working on"
+    },
+    "isolation": {
+      "yes": "feel lonely, left out, unwanted, or that they have no one; or say they avoid or withdraw from people",
+      "no": "they happily choose time alone; it is an introvert joke; someone else is lonely"
+    },
+    "family_strain": {
+      "yes": "describe conflict, hurt, rejection, pressure, or loss with family, a partner, or close friends that distresses them",
+      "no": "it is a neutral or happy mention of family or friends; it is advice about someone else's relationship"
+    },
+    "emptiness": {
+      "yes": "feel numb, empty, exhausted, without energy or interest, cannot sleep, or are crying",
+      "no": "it is ordinary short-term tiredness said casually, such as a long day followed by going to bed"
+    }
+  }
+}

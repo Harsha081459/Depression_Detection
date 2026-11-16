@@ -1,0 +1,319 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+\title{\textbf{Progress Report}\\Person-level early risk on eRisk 2026 Task 2}
+\author{Team 6 --- AIX / AIML Project Elective, IIIT Bangalore\\Harsha, Prajwal, Munji \quad Faculty: the course faculty}
+\date{Updated 1 November 2026 (extending the 28 September 2026 report)}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We score the eRisk user, from that person's own dated posts and comments, in order. We do not score whether a single post sounds sad. An eRisk-positive label is the contest golden truth, built by a self-mention protocol. It is not a clinical diagnosis.
+
+The labelled set has 523 users (91 positive, 432 control) and 155,284 target writings. Positives were observed longer: median span 725.7 days against 281.9 for controls. Full-history span and total writing count are collection differences, so they are excluded from every model we defend.
+
+Three of us each read three positive histories, chosen to cover a few hours, about a month, several months, and several years, and we subsequently audited three control histories across short, medium, and long spans. Counted on all 523 users, a strict first-person disclosure occurs for 68 of 91 positives (74.7\%) and 7 of 432 controls (1.6\%). Among positives who disclose, the first such writing is typically 92 days and 52 writings into the history. Only 23 of 91 disclose inside the first four weeks.
+
+Following the 28 September review, we reduced our candidate indicators to interpretable linguistic and behavioural signals, tested three disclosure-sensitivity arms (\emph{unmasked}, \emph{masked}, and \emph{before first disclosure}), and deployed a local open-weight language model (\texttt{qwen2.5:7b-instruct}) on the lab GPU to score five post-level semantic signals (\emph{self-blame}, \emph{helplessness}, \emph{isolation}, \emph{family strain}, and \emph{emptiness}) using first-token log-probabilities with exact per-call cache erasure (repeatability max difference $0.0$). From 62,378 non-disclosure 12-week writings, we locked a user-disjoint 600-item pilot (300 development, 300 held-out across 584 posts and 243 users). Two team raters independently labelled all 300 development items (Rater A: 87 Yes / 213 No; Rater B: 72 Yes / 228 No), agreeing on 275 of 300 items (91.7\%, Cohen's $\kappa = 0.680$--$0.870$). With the 25 development disagreements adjudicated by a local tie-breaker model (\texttt{qwen3:8b}; recorded explicitly as non-human adjudication), Qwen 2.5 7B achieves post-level ranking AUROC of $0.868$--$0.953$ across all five signals, substantially outperforming the keyword rule baseline ($0.526$--$0.772$). Prompts are now frozen as Version 1, and the 300 held-out items are scored and ready for two-human validation before any full-cohort LLM classifier is claimed.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\section{The question we locked}
+The working question from the 25 August meeting has two parts. L1 asks what the text of a user's writings can support. L2 asks whether a change in posting pattern --- rate, gaps, hour of day --- makes a decision more robust once we are not allowed to wait for the whole file.
+
+A later meeting, on the difference between a sad post and the person who posted it, locked the unit of the problem. The BBC grey-wolf story is sad news. The journalist is not the subject. Toxicity is a different label again. Our unit is the account: many writings, dates, and order, restricted to writings marked \texttt{target: true}.
+
+The claim we are willing to make is narrower than ``we detect depression.''
+
+\begin{center}
+\begin{tabular}{p{0.45\textwidth}p{0.45\textwidth}}
+\toprule
+\textbf{We are doing this} & \textbf{We are not doing this} \\
+\midrule
+Score the eRisk user label from that user's timeline & Issue a clinical diagnosis \\
+Require many writings, dates, and order & Treat one dark post as the person \\
+Name a sign before a language model uses it & Let a blind transformer match the label by luck \\
+Keep disclosure as a switch we can turn off & Treat the confession sentence as a success \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Keyboard, GPS, scroll, and BioAffect are absent from this file. Cross-platform identity matching was set aside. Paid APIs are out, under the data-use agreement.
+
+The one-sentence research question, as it stands after the reading:
+\begin{quote}
+\emph{When the model is not allowed to wait for the confession, do interpretable semantic and behavioural signals flag eRisk-positive users earlier or more stably than surface word counts alone?}
+\end{quote}
+
+\section{Data}
+eRisk 2026 Task 2 is the only labelled experiment this semester.
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{Item} & \textbf{Value} \\
+\midrule
+Users & 523 \\
+Positive / control & 91 / 432 (17.4\% / 82.6\%) \\
+Target writings & 155,284 \\
+Median writings per user & 316 \\
+Label & User-level golden truth, not a field inside the post \\
+Kept writings & \texttt{user\_id} matches the subject and \texttt{target} is \texttt{true} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A thread JSON contains other people's comments. Those rows are dropped. A submission is an original post (title and body). A comment is a reply; its title is empty. Both count when they belong to the subject.
+
+Span is the time from a user's first target writing to their last, in fractional days:
+\begin{equation}
+\mathrm{span} = \frac{t_{\mathrm{last}} - t_{\mathrm{first}}}{86400}.
+\end{equation}
+Truncating to whole days with a day-count cast marks a same-day burst as zero. The shortest history in our sample is about 4.7 hours ($0.20$ days), not zero days.
+
+Chance level for average precision is the positive rate
+\begin{equation}
+\pi = \frac{91}{523} \approx 0.174.
+\end{equation}
+A useless ranker has AUROC $0.5$ and average precision $\approx 0.174$.
+
+\section{How long the histories are}
+
+\begin{center}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Group} & \textbf{Users} & \textbf{Median span} & \textbf{Median writings} & \textbf{Under 180 days} & \textbf{2 years or more} \\
+\midrule
+Positive & 91 & 725.7 days & 383 & 16 & 45 (49.5\%) \\
+Control & 432 & 281.9 days & 277 & 171 & 113 (26.2\%) \\
+All & 523 & 337.7 days & 316 & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Finer bins, same table: under 60 days, 7 positives and 100 controls; under a year, 26 positives and 246 controls.
+
+Positives post less often, about 2.9 writings a week against about 5.8 for controls. They were watched longer. They did not post more densely. A model given \texttt{span\_days} or total \texttt{n\_writings} can learn ``long file, therefore positive.'' We exclude both from every model we defend.
+
+\section{Manual chart reviews: nine positives and three controls}
+The nine positive users below were chosen across short, medium, and long observation spans. Each reader took one short, one medium, and one long history, and wrote notes before comparing. Raw text stays out of git, slides, and this report.
+
+\subsection{What all three readers saw in positives}
+\begin{enumerate}[nosep]
+\item \textbf{People say it.} A first-person statement of depression, diagnosis, medication, or treatment appears in these histories. On the long sparse history the main disclosure sits on one date inside 4.5 years of ordinary writing.
+\item \textbf{Most of the timeline is ordinary.} Games, films, sport, and social chat continue beside the distress. A positive user is not a stream of dark posts. Silence between bursts is not the same thing as recovery.
+\item \textbf{Night posting was not a readable sign.} A single late night has no earlier habit to compare with.
+\item \textbf{Indirect signs seen across multiple readers:} self-blame and low worth; strain with family or friends; isolation or withdrawal; emptiness/exhaustion; asking for help; and distress in bursts rather than in every post.
+\end{enumerate}
+
+\subsection{Three-control chart review (added after 28 September)}
+Following the 28 September review directive, we manually audited three labelled control histories across short (26.6 days, 503 writings), medium (170.2 days, 344 writings), and long (1,220.2 days, 238 writings) spans:
+\begin{itemize}[nosep]
+\item \textbf{Short and medium controls (gaming-heavy):} Both timelines are dominated by video-game mechanics, boss fights, quests, equipment builds, and community disputes. Strong negative words (\emph{``hate,'' ``worst,'' ``die,'' ``hopeless,'' ``stuck''}) refer to game bosses or quests rather than personal worthlessness. Keyword models can produce severe false alarms on such users (the baseline S4--S7 model assigns the short control an out-of-fold probability of $0.975$). A semantic extractor must distinguish \emph{``I hate this quest''} from \emph{``I hate myself.''}
+\item \textbf{Long control (real family strain):} This control user describes genuine family conflict, alongside a supportive partner and concrete hobby plans. Therefore, interpersonal/family strain (S3) can be legitimately non-zero in a control user; family conflict alone is not diagnostic of depression.
+\end{itemize}
+
+\section{Disclosure, counted on everyone}
+Strict disclosure means a first-person diagnosis, ``my depression,'' or ``I have / suffer from / struggle with depression.'' Broad adds ``I am / feel / was depressed'' and first-person antidepressant use. In our full disclosure audit (including first-person mental-health care and suicide-attempt regexes), 610 target writings match across the dataset (571 in positives, 39 in controls).
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Pattern} & \textbf{Positives (91)} & \textbf{Controls (432)} \\
+\midrule
+Strict disclosure & 68 (74.7\%) & 7 (1.6\%) \\
+Broader wording & 74 (81.3\%) & 9 (2.1\%) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Among positives with a strict disclosure, the median time to the first one is 91.9 days and 51.5 writings. Only 23 of 91 (25\%) disclose inside four weeks, and 33 of 91 inside twelve weeks. Twenty-three of 91 never match the strict pattern. Deleting single clinical words from a lexicon barely changes a model because the rest of the sentence remains; the proper sensitivity test removes the whole disclosing writing or cuts the timeline before the first disclosure.
+
+\section{Earlier baseline scores (L1, L2, and NRC emotion prefixes)}
+Split: five-fold stratified cross-validation on users, shuffle, seed 42. A user is entirely in training or entirely in test.
+\begin{equation}
+\mathrm{AUROC} = P(s_+ > s_-), \qquad
+\mathrm{Precision}(\tau) = \frac{TP}{TP + FP}, \qquad
+\mathrm{Recall}(\tau) = \frac{TP}{TP + FN}.
+\end{equation}
+
+\begin{center}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Model} & \textbf{Uses post text?} & \textbf{4 weeks} & \textbf{12 weeks} & \textbf{Full history} \\
+\midrule
+Rhythm only & No & 0.633 / 0.246 & 0.661 / 0.266 & 0.786 / 0.455 \\
+Clocks (rhythm + $c_t$) & No & 0.715 / 0.349 & 0.743 / 0.384 & 0.842 / 0.527 \\
+Emotion only (NRC) & Yes, word counts & 0.798 / 0.584 & 0.834 / 0.632 & 0.917 / 0.744 \\
+Clocks + emotion & Yes, word counts & 0.854 / 0.642 & 0.884 / 0.696 & 0.942 / 0.787 \\
+Clinical words removed & Yes, words skipped & 0.835 / 0.565 & 0.857 / 0.596 & 0.917 / 0.710 \\
+Full-history TF--IDF & Yes, sentences & --- & --- & 0.946 / 0.827 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Signal reduction (S1--S7), indirect pipeline, and disclosure masking}
+To replace opaque bag-of-words features with interpretable intermediate indicators, we defined seven conceptual signals on a user's prefix of writings within 4 weeks (28 days), 8 weeks (56 days), 12 weeks (84 days), and full history, each mapped to $[0,1]$ without consulting the user label:
+
+\begin{enumerate}[nosep]
+\item \textbf{S1 --- Self-blame / low worth:} First-person negative beliefs about one's own worth, failure as a person, guilt, or being a burden (excluding poor performance in games or tasks).
+\item \textbf{S2 --- Helplessness / powerlessness:} Feeling trapped, hopeless, powerless, or unable to cope with life (excluding technical or gaming help requests).
+\item \textbf{S3 --- Interpersonal strain:} Split in our post-level pipeline into two separate indicators: \textbf{Isolation} (feeling lonely, unwanted, or socially withdrawn) and \textbf{Family/friend strain} (distressing conflict, rejection, or hurt involving family, a partner, or close friends).
+\item \textbf{S4 --- Absolutist negative first-person wording:} Fraction of writings containing a first-person pronoun (\texttt{i, me, my, myself}), an absolutist word (\texttt{always, never, nothing, completely, everyone, forever, ...}), and a negative word.
+\item \textbf{S5 --- Distress bursts:} Excess negative token density on the user's top-3 most distressed writings above that user's median writing ($\max(0, \mathrm{mean}(\mathrm{top3}) - \mathrm{median})$), alongside short-gap distress clusters.
+\item \textbf{S6 --- Silence after distress:} Graded closed-gap score measuring whether a cluster of distressed writings is followed by an inter-post gap at least $3\times$ the user's prior median gap (and $\ge 1$ day). In full-history mode, time after the final recorded writing is right-censored (not observed), so open terminal gaps are excluded from classifiers.
+\item \textbf{S7 --- Polarity swings (flips and jumps):} For each writing, polarity is $p_i = (\text{\#pos} - \text{\#neg})/(\text{\#pos} + \text{\#neg} + 1)$. We track both the adjacent sign-flip rate $\mathrm{mean}(p_i p_{i-1} < 0)$ and mean jump $\mathrm{mean}(|p_i - p_{i-1}|)/2$.
+\item \textbf{Emptiness (explicit fifth semantic signal):} Feeling numb, empty, drained, crying, or unable to sleep (excluding casual end-of-day tiredness). In \texttt{final\_indirect\_pipeline.py} and the LLM pilot, Emptiness is evaluated alongside Self-blame, Helplessness, Isolation, and Family strain.
+\end{enumerate}
+
+\subsection{Early-window cohort contrasts on S4 and S7}
+At the 4-week prefix, the raw S4 matching-writing fraction is \textbf{7.49$\times$} higher in positives than controls ($0.1588$ vs.\ $0.0212$; 95\% stratified bootstrap CI $4.50$--$12.69\times$, Mann--Whitney $p = 1.34\times 10^{-21}$). The raw S7 sign-flip rate is \textbf{7.87$\times$} higher at 4 weeks ($0.0722$ vs.\ $0.0092$; 95\% CI $4.01$--$16.37\times$, $p = 2.95\times 10^{-16}$) and \textbf{8.23$\times$} higher at 12 weeks. These are descriptive cohort associations on word-rule features, not clinical diagnostic proof.
+
+\subsection{Indirect word-rule pipeline across three disclosure arms}
+Before substituting LLM scores across the whole cohort, we evaluated the word-rule indirect pipeline (\texttt{final\_indirect\_pipeline.py}) under five-fold stratified user cross-validation across three disclosure sensitivity arms:
+\begin{itemize}[nosep]
+\item \textbf{Unmasked:} all target writings in the prefix window.
+\item \textbf{Masked:} all 610 detected disclosure writings removed (while preserving their timestamps with zero distress so removal does not fabricate a false silence gap).
+\item \textbf{Before disclosure:} each user's timeline truncated strictly before their first disclosure writing.
+\end{itemize}
+
+Because choosing a fixed subset of features on all 523 users can be slightly optimistic, we also fit a \textbf{nested} XGBoost evaluation where feature selection is performed strictly inside each training fold. Table~\ref{tab:indirect_nested} reports the nested XGBoost AUROC / AUPRC across windows and disclosure arms.
+
+\begin{table}[h]
+\centering
+\caption{Word-rule indirect pipeline (\texttt{final\_indirect\_pipeline.py}): nested 5-fold user-level XGBoost (AUROC / AUPRC). Chance AUPRC is $0.174$.}
+\label{tab:indirect_nested}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Disclosure arm} & \textbf{4 weeks} & \textbf{8 weeks} & \textbf{12 weeks} & \textbf{Full history} \\
+\midrule
+Unmasked & 0.798 / 0.548 & 0.790 / 0.573 & 0.842 / 0.619 & 0.884 / 0.624 \\
+Masked (610 disclosures removed) & 0.786 / 0.552 & 0.791 / 0.603 & 0.839 / 0.623 & 0.867 / 0.575 \\
+Strictly before first disclosure & 0.731 / 0.417 & 0.740 / 0.448 & 0.778 / 0.459 & 0.784 / 0.459 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Removing detected disclosure writings barely changes 4-week to 12-week ranking performance ($0.798 \to 0.786$ at 4w; $0.842 \to 0.839$ at 12w), and truncating strictly before the first disclosure still leaves 4-week AUROC at $0.731$ (AUPRC $0.417$). However, word rules still suffer from gaming and hobby false positives, motivating semantic post-level scoring with a local LLM.
+
+\section{Exact post-level scoring system: Word-list baseline vs.\ Local Qwen 2.5 7B}
+To test whether a local open-weight language model extracts the five semantic signals (\emph{self-blame}, \emph{helplessness}, \emph{isolation}, \emph{family strain}, and \emph{emptiness}) more accurately than word rules, every pilot post is scored by both methods.
+
+\subsection{Keyword / word-list baseline score ($w_i \in \{0,1\}$)}
+In \texttt{final\_indirect\_pipeline.py} (\texttt{flags(text)}), a post is tokenized in lowercase. If the post contains zero first-person pronouns (\texttt{i, me, my, myself, mine, i'm, i've, i'd, i'll}), or if it hits any game/hobby word (\texttt{game, gaming, boss, quest, raid, rpg, weapon, loot, level, build, ...}) without a real-life anchor word (\texttt{family, friend, life, myself, school, college, job, work, feeling, ...}), all five signal flags are set to $0$. Otherwise, each signal is a binary indicator $w_i \in \{0,1\}$ testing whether the post contains any token from that signal's lexicon (and, for \texttt{family\_strain}, at least one negative token).
+
+\subsection{Local Qwen 2.5 7B log-probability scorer ($s_i \in [0,1]$)}
+In \texttt{llm\_signal\_scorer.py}, we run \texttt{qwen2.5:7b-instruct} locally on the lab GPU (\texttt{user5@172.16.121.45}, RTX 4060 Ti, Ollama \texttt{0.34.0}, model digest \texttt{845dbda0ea48ed749caafd9e6037047aa19acfcfd82e704d7ca97d631a0b697e}) with \texttt{temperature = 0}, \texttt{num\_predict = 1}, \texttt{num\_ctx = 2048}, \texttt{seed = 42}, \texttt{num\_batch = 512}, and \texttt{top\_logprobs = 20}. All requests stay on \texttt{127.0.0.1} with HTTP proxies disabled.
+
+For a post (truncated to at most $2{,}000$ characters; 49 of 600 pilot judgments exceed $2{,}000$ characters and carry \texttt{model\_truncated\_flag = 1}) and a signal $k$, the prompt asks:
+\begin{quote}
+\small
+\texttt{System: You are labelling one social media post for a research study. Judge only what the writer says about themselves in this post. Do not guess about their life beyond the post. Answer with exactly one word: Yes or No.}\\
+\texttt{User: Post: """<post text>""" Question: Does the writer <yes-criteria>? Answer No if <no-criteria>. Answer Yes or No.}
+\end{quote}
+
+Instead of taking a hard text string, \texttt{parse\_logprobs()} inspects the top 20 candidate first tokens $T_{20}$ and their log-probabilities $\log p(t)$:
+\begin{enumerate}[nosep]
+\item Collect all tokens in $T_{20}$ whose stripped lowercase string is \texttt{"yes"} ($V_{\mathrm{yes}}$) or \texttt{"no"} ($V_{\mathrm{no}}$).
+\item Aggregate each group via log-sum-exp:
+\begin{equation}
+\ell_{\mathrm{yes}} = \log \sum_{t \in V_{\mathrm{yes}}} \exp(\log p(t)), \qquad
+\ell_{\mathrm{no}} = \log \sum_{t \in V_{\mathrm{no}}} \exp(\log p(t)).
+\end{equation}
+If one group is absent from the top 20 tokens (which occurs on $11.57\%$ of cached calls when the model is overwhelmingly confident in the opposite answer), its log-mass is assigned the conservative floor $\min_{t \in T_{20}} \log p(t) - 1$ and \texttt{missing\_flag = 1} is recorded.
+\item Convert $(\ell_{\mathrm{yes}}, \ell_{\mathrm{no}})$ into a normalized continuous score in $[0,1]$:
+\begin{equation}
+s_i = \frac{e^{\ell_{\mathrm{yes}}}}{e^{\ell_{\mathrm{yes}}} + e^{\ell_{\mathrm{no}}}}
+= \exp\!\Big(\ell_{\mathrm{yes}} - \log\big(e^{\ell_{\mathrm{yes}}} + e^{\ell_{\mathrm{no}}}\big)\Big).
+\end{equation}
+\end{enumerate}
+
+\paragraph{Exact repeatability gate.}
+Because llama.cpp/Ollama prompt-prefix caching can slightly alter floating-point log-probabilities across calls, our isolated service (\texttt{start\_isolated\_ollama.sh}) runs with \texttt{OLLAMA\_NUM\_PARALLEL = 1}, flash attention disabled, and explicitly erases the server KV slot cache before every single call. Across 10/10 synthetic probes and two independent repeats of 100 real private pilot questions, the maximum absolute score difference between runs and against the original SQLite cache was \textbf{0.0} (\texttt{private\_repeatability\_final.json}).
+
+\section{Human signal-validity pilot and development results}
+
+\subsection{User-disjoint 600-item pilot design}
+From the 62,378 non-disclosure target writings inside the first 12 weeks, \texttt{prepare\_llm\_pilot.py} locked a \textbf{user-disjoint split} before any model scoring or human labelling: users were deterministically partitioned into \textbf{development} and \textbf{held-out} halves stratified by eRisk class. Thus, no user in the development set ever appears in the held-out set.
+
+Using a max-flow capacity-matching sampler (\texttt{llm\_pilot\_review.py}), we selected \textbf{600 post-question judgments} from \textbf{584 distinct posts} across \textbf{243 users}:
+\begin{itemize}[nosep]
+\item \textbf{Development split:} 300 judgments (60 per signal: 30 with Qwen score $s_i \ge 0.5$ and 30 with $s_i < 0.5$).
+\item \textbf{Held-out split:} 300 judgments across 287 distinct posts (60 per signal: 30 with $s_i \ge 0.5$ and 30 with $s_i < 0.5$).
+\item \textbf{Caps and controls:} At most 3 distinct posts per user globally, at most 2 signal questions per post, both cohort labels represented in every signal/split, and explicit game, sport, and news control posts included in both splits (development: 34 game, 25 news, 11 sport; held-out: 41 game, 21 news, 11 sport).
+\end{itemize}
+
+\subsection{Two-rater independent development annotation}
+Two team annotators independently labelled all 300 development items on offline blinded HTML pages (\texttt{review\_development\_A.html} and \texttt{review\_development\_B.html}) on the lab machine, with all user IDs, cohort labels, and model scores hidden:
+\begin{itemize}[nosep]
+\item \textbf{Rater A (\texttt{rater\_A.csv}):} 300 complete answers (0 blanks) --- \textbf{87 Yes}, \textbf{213 No}.
+\item \textbf{Rater B (\texttt{rater\_B.csv}):} 300 complete answers (0 blanks) --- \textbf{72 Yes}, \textbf{228 No}.
+\item \textbf{Raw agreement:} The two raters gave the exact same answer on \textbf{275 of 300} items (\textbf{91.7\%} agreement) and disagreed on \textbf{25} items (8.3\%). Among the 25 disagreements, Rater A answered Yes and Rater B answered No on 20 items, while Rater B answered Yes and Rater A answered No on 5 items.
+\item \textbf{Tie-breaking of the 25 development disagreements:} For the development analysis, the 25 disputed items were adjudicated by a separate local model (\texttt{qwen3:8b}, digest \texttt{500a1f067a9f...}) reading only the blinded disagreement page (yielding 18 Yes and 7 No). In \texttt{results/pilot\_development.json}, we explicitly record \texttt{adjudication\_type = "local\_AI\_not\_human"} and \texttt{reference\_is\_independent\_human\_gold = false}.
+\end{itemize}
+
+\subsection{How the post-level AUROC scores were computed}
+For each signal $k$, let $y_1,\dots,y_{60} \in \{0,1\}$ denote the 60 development reference labels (with $n_+ = \sum_i y_i$ Yes items and $n_- = 60 - n_+$ No items). We evaluate both Qwen's continuous score $s_i \in [0,1]$ and the word-list baseline's binary score $w_i \in \{0,1\}$ against $y_i$ using the exact Mann--Whitney rank-sum AUROC with average-rank tie handling (\texttt{evaluate\_llm\_signals.py}):
+\begin{equation}
+\mathrm{AUROC} = \frac{\sum_{i:\,y_i = 1} \mathrm{rank}(i) - \frac{n_+(n_+ + 1)}{2}}{n_+ \, n_-},
+\end{equation}
+where tied scores share the midpoint rank $\frac{1}{2}(i_{\mathrm{start}} + i_{\mathrm{end}})$. We also compute Cohen's kappa between Rater A and Rater B:
+\begin{equation}
+\kappa = \frac{P_o - P_e}{1 - P_e}, \qquad
+P_o = \frac{1}{60}\sum_{i=1}^{60} \mathbf{1}\{a_i = b_i\}, \qquad
+P_e = p_A p_B + (1 - p_A)(1 - p_B).
+\end{equation}
+
+\begin{table}[h]
+\centering
+\caption{Development pilot results across the 300 post-question pairs (60 per signal). Agreement and $\kappa$ are strictly between Human Rater A and Human Rater B. Reference Yes counts combine 275 human agreements with 25 local \texttt{qwen3:8b} tie-breaks.}
+\label{tab:pilot_dev}
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Signal} & \textbf{$N$} & \textbf{Agree} & \textbf{Disagree} & \textbf{Cohen's $\kappa$} & \textbf{Ref.\ Yes} & \textbf{Qwen 2.5 AUROC} & \textbf{Word-list AUROC} \\
+\midrule
+Self-blame & 60 & 57 (95.0\%) & 3 & 0.870 & 17 & \textbf{0.917} (0.92) & 0.772 (0.77) \\
+Helplessness & 60 & 56 (93.3\%) & 4 & 0.836 & 19 & \textbf{0.919} (0.92) & 0.641 (0.64) \\
+Isolation & 60 & 54 (90.0\%) & 6 & 0.780 & 23 & \textbf{0.931} (0.93) & 0.580 (0.58) \\
+Family strain & 60 & 56 (93.3\%) & 4 & 0.680 & 7 & \textbf{0.868} (0.87) & 0.526 (0.53) \\
+Emptiness & 60 & 52 (86.7\%) & 8 & 0.693 & 19 & \textbf{0.953} (0.95) & 0.748 (0.75) \\
+\midrule
+\textbf{Total / Range} & \textbf{300} & \textbf{275 (91.7\%)} & \textbf{25} & \textbf{0.680--0.870} & \textbf{85} & \textbf{0.868--0.953} & \textbf{0.526--0.772} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Across all five signals, Qwen 2.5 7B improves post-level ranking over the keyword baseline by $+0.144$ (Self-blame), $+0.279$ (Helplessness), $+0.351$ (Isolation), $+0.342$ (Family strain), and $+0.204$ (Emptiness) AUROC points. Note that these are post-level signal-ranking scores on an enriched 300-item development sample, not user-level depression classification accuracies.
+
+\section{Where the work stands and immediate next step}
+
+\begin{center}
+\begin{tabular}{p{0.46\textwidth}p{0.46\textwidth}}
+\toprule
+\textbf{Completed} & \textbf{Next (in progress)} \\
+\midrule
+Dataset audited (523 users, 155,284 writings; span confound and 610 disclosures quantified) & Independent two-human annotation of the 300 held-out items (\texttt{review\_heldout\_A/B.html}) \\
+Nine positive and three control timelines manually reviewed & Human-only adjudication of held-out disagreements (no AI tie-breaker) \\
+Indirect word-rule pipeline evaluated at 4w, 8w, 12w, full across unmasked, masked, and before-disclosure arms & One-shot held-out gate evaluation ($\mathrm{AUROC} \ge 0.80$, all probes passed, clear gain over word list) \\
+Local Qwen 2.5 7B logprob scorer deployed with KV-cache erasure and $0.0$ repeatability diff & Aggregate validated LLM signals to user-level prefixes and compare against word-rule baseline \\
+300 development items independently labelled by Rater A and Rater B (275/300 agreement, 91.7\%) & \\
+Prompts frozen as Version 1 and all 300 held-out items scored on the lab GPU & \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{document}
