@@ -7,6 +7,9 @@ import numpy as np
 import pandas as pd
 import pytest
 
+if not (Path(__file__).resolve().parents[2] / 'private' / 'cohort_v1' / 'split.json').exists():
+    pytest.skip('needs the private eRisk data, which is not in the repository', allow_module_level=True)
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from common import ART, PRIV, RQ, load_model, load_split, load_writings, prepare   # noqa: E402
 import pipeline as PL                                                              # noqa: E402

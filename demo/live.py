@@ -22,14 +22,21 @@ TOK = re.compile(r"[a-z]+(?:'[a-z]+)?")
 _lex = None
 
 
+def nrc_available():
+    return LEX.exists()
+
+
 def nrc(text):
+    """NRC word-emotion shares. The lexicon has its own licence and is not in the repository: without it
+    these features are 0 (they are shown for explanation only; the final text model does not use them)."""
     global _lex
     if _lex is None:
         _lex = {}
-        for line in open(LEX, encoding='utf-8'):
-            p = line.rstrip('\n').split('\t')
-            if len(p) == 3 and p[2] == '1':
-                _lex.setdefault(p[0], set()).add(p[1])
+        if LEX.exists():
+            for line in open(LEX, encoding='utf-8'):
+                p = line.rstrip('\n').split('\t')
+                if len(p) == 3 and p[2] == '1':
+                    _lex.setdefault(p[0], set()).add(p[1])
     c = dict.fromkeys(EMO, 0); toks = TOK.findall(text)
     for w in toks:
         for e in _lex.get(w, ()):

@@ -7,3 +7,6 @@ scipy>=1.11
 scikit-learn==1.9.0
 xgboost>=2.0        # imported by scripts/analysis/final_indirect_pipeline.py (live rule features)
 pytest>=8
+# Scoring new writings (live input): torch + transformers, e.g.  pip install torch transformers
+# (CPU works; on Windows with Smart App Control a separate venv without scipy/scikit-learn may be needed,
+#  point the demo to it with EMBED_PYTHON=<that python>)
