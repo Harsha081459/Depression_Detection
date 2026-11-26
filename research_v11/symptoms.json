@@ -1,0 +1,26 @@
+{
+ "_note": "Team-written plain-language statements of common depression symptoms (domains similar to standard questionnaires; wording is our own). Each writing's similarity to each statement is one interpretable feature.",
+ "symptoms": {
+  "sadness": "I feel sad, down and unhappy most of the time.",
+  "hopelessness": "I feel hopeless about the future and expect things to only get worse.",
+  "failure": "I feel like a failure and that I have let everyone down.",
+  "anhedonia": "Nothing is fun anymore and I no longer enjoy the things I used to love.",
+  "guilt": "I feel guilty all the time about things I did or did not do.",
+  "deserve_punishment": "I feel like I deserve to be punished.",
+  "self_hate": "I hate myself and I am disappointed in who I am.",
+  "self_blame": "I blame myself for everything that goes wrong.",
+  "self_harm": "I have been thinking about hurting myself or ending my life.",
+  "crying": "I cry a lot these days, often for no reason.",
+  "restlessness": "I feel restless and agitated and I cannot sit still.",
+  "withdrawal": "I have lost interest in other people and stopped doing things with them.",
+  "indecision": "I find it very hard to make even small decisions.",
+  "worthlessness": "I feel worthless and useless.",
+  "no_energy": "I have no energy left to do anything.",
+  "sleep": "I cannot sleep at night, or I sleep far too much.",
+  "irritability": "I get irritated and angry very easily lately.",
+  "appetite": "I have lost my appetite, or I eat far too much to cope.",
+  "concentration": "I cannot concentrate or focus on anything anymore.",
+  "exhaustion": "I am tired and exhausted all the time.",
+  "loneliness": "I feel completely alone and nobody cares about me."
+ }
+}

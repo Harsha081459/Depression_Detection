@@ -1,0 +1,277 @@
+{
+ "window": "pre",
+ "item_auroc_dev_user_mean": {
+  "self_blame": 0.8822214895409751,
+  "helplessness": 0.8332783822398065,
+  "isolation": 0.7627578122137965,
+  "family_strain": 0.864087628677144,
+  "emptiness": 0.8630618749313111,
+  "distressed": 0.87269663332967,
+  "neg_affect": 0.725647507052057,
+  "low_positivity": 0.4143678792541305,
+  "mood_swing": 0.869985712715683,
+  "absolutist": 0.8342125508297615,
+  "night": 0.6241711543393046,
+  "silence": 0.7891343371066417
+ },
+ "dropped_items": [
+  "low_positivity"
+ ],
+ "spearman_user_level": {
+  "self_blame": {
+   "self_blame": 1.0,
+   "helplessness": 0.842,
+   "isolation": 0.805,
+   "family_strain": 0.87,
+   "emptiness": 0.83,
+   "distressed": 0.878,
+   "neg_affect": 0.329,
+   "mood_swing": 0.523,
+   "absolutist": 0.54,
+   "night": 0.104,
+   "silence": 0.612
+  },
+  "helplessness": {
+   "self_blame": 0.842,
+   "helplessness": 1.0,
+   "isolation": 0.768,
+   "family_strain": 0.776,
+   "emptiness": 0.807,
+   "distressed": 0.812,
+   "neg_affect": 0.348,
+   "mood_swing": 0.466,
+   "absolutist": 0.493,
+   "night": 0.068,
+   "silence": 0.52
+  },
+  "isolation": {
+   "self_blame": 0.805,
+   "helplessness": 0.768,
+   "isolation": 1.0,
+   "family_strain": 0.803,
+   "emptiness": 0.787,
+   "distressed": 0.777,
+   "neg_affect": 0.204,
+   "mood_swing": 0.331,
+   "absolutist": 0.364,
+   "night": 0.071,
+   "silence": 0.505
+  },
+  "family_strain": {
+   "self_blame": 0.87,
+   "helplessness": 0.776,
+   "isolation": 0.803,
+   "family_strain": 1.0,
+   "emptiness": 0.809,
+   "distressed": 0.906,
+   "neg_affect": 0.365,
+   "mood_swing": 0.51,
+   "absolutist": 0.542,
+   "night": 0.123,
+   "silence": 0.601
+  },
+  "emptiness": {
+   "self_blame": 0.83,
+   "helplessness": 0.807,
+   "isolation": 0.787,
+   "family_strain": 0.809,
+   "emptiness": 1.0,
+   "distressed": 0.79,
+   "neg_affect": 0.298,
+   "mood_swing": 0.471,
+   "absolutist": 0.497,
+   "night": 0.027,
+   "silence": 0.52
+  },
+  "distressed": {
+   "self_blame": 0.878,
+   "helplessness": 0.812,
+   "isolation": 0.777,
+   "family_strain": 0.906,
+   "emptiness": 0.79,
+   "distressed": 1.0,
+   "neg_affect": 0.332,
+   "mood_swing": 0.568,
+   "absolutist": 0.601,
+   "night": 0.134,
+   "silence": 0.665
+  },
+  "neg_affect": {
+   "self_blame": 0.329,
+   "helplessness": 0.348,
+   "isolation": 0.204,
+   "family_strain": 0.365,
+   "emptiness": 0.298,
+   "distressed": 0.332,
+   "neg_affect": 1.0,
+   "mood_swing": 0.244,
+   "absolutist": 0.34,
+   "night": 0.042,
+   "silence": 0.288
+  },
+  "mood_swing": {
+   "self_blame": 0.523,
+   "helplessness": 0.466,
+   "isolation": 0.331,
+   "family_strain": 0.51,
+   "emptiness": 0.471,
+   "distressed": 0.568,
+   "neg_affect": 0.244,
+   "mood_swing": 1.0,
+   "absolutist": 0.75,
+   "night": 0.085,
+   "silence": 0.409
+  },
+  "absolutist": {
+   "self_blame": 0.54,
+   "helplessness": 0.493,
+   "isolation": 0.364,
+   "family_strain": 0.542,
+   "emptiness": 0.497,
+   "distressed": 0.601,
+   "neg_affect": 0.34,
+   "mood_swing": 0.75,
+   "absolutist": 1.0,
+   "night": 0.064,
+   "silence": 0.436
+  },
+  "night": {
+   "self_blame": 0.104,
+   "helplessness": 0.068,
+   "isolation": 0.071,
+   "family_strain": 0.123,
+   "emptiness": 0.027,
+   "distressed": 0.134,
+   "neg_affect": 0.042,
+   "mood_swing": 0.085,
+   "absolutist": 0.064,
+   "night": 1.0,
+   "silence": 0.044
+  },
+  "silence": {
+   "self_blame": 0.612,
+   "helplessness": 0.52,
+   "isolation": 0.505,
+   "family_strain": 0.601,
+   "emptiness": 0.52,
+   "distressed": 0.665,
+   "neg_affect": 0.288,
+   "mood_swing": 0.409,
+   "absolutist": 0.436,
+   "night": 0.044,
+   "silence": 1.0
+  }
+ },
+ "merged_groups": {
+  "self_blame+helplessness+isolation+family_strain+emptiness+distressed": [
+   "self_blame",
+   "helplessness",
+   "isolation",
+   "family_strain",
+   "emptiness",
+   "distressed"
+  ],
+  "neg_affect": [
+   "neg_affect"
+  ],
+  "mood_swing+absolutist": [
+   "mood_swing",
+   "absolutist"
+  ],
+  "night": [
+   "night"
+  ],
+  "silence": [
+   "silence"
+  ]
+ },
+ "rules": {
+  "red": {
+   "single": 97.5,
+   "pair": 90.0
+  },
+  "amber": {
+   "single": 90.0,
+   "pair": 75.0
+  },
+  "composite_cut": {
+   "red": 7.333283333333334,
+   "amber": 6.231749999999998
+  }
+ },
+ "log": [
+  "v1 constants (red 97.5/90, amber 90/75, composite P90/P75) fixed before any held-out case was built",
+  "window: cur (last 14 days) and pre (history so far) both computed on dev; pre chosen (dev composite AUROC 0.91 vs 0.58; red+amber kappa 0.51 vs 0.40). Held-out not read.",
+  "no constant changed after seeing dev rates (pre red rate 16.5% vs LR flag rate 24.6%)"
+ ],
+ "dev_all": {
+  "n": 418,
+  "positives": 81,
+  "colour_rate": {
+   "green": 0.562,
+   "amber": 0.273,
+   "red": 0.165
+  },
+  "positive_rate_by_colour": {
+   "amber": 0.298,
+   "green": 0.051,
+   "red": 0.507
+  },
+  "n_by_colour": {
+   "green": 235,
+   "amber": 114,
+   "red": 69
+  },
+  "crosstab_lrflag_x_colour": {
+   "0": {
+    "green": 227,
+    "amber": 68,
+    "red": 20
+   },
+   "1": {
+    "green": 8,
+    "amber": 46,
+    "red": 49
+   }
+  },
+  "kappa_red_vs_flag": 0.46374952324815366,
+  "kappa_redamber_vs_flag": 0.5097373243738547,
+  "auroc_composite_full_history": 0.9095505000549511,
+  "auroc_lr_full_history_oof": 0.8963622376085284
+ },
+ "dev_np": {
+  "n": 175,
+  "positives": 16,
+  "colour_rate": {
+   "green": 0.669,
+   "amber": 0.234,
+   "red": 0.097
+  },
+  "positive_rate_by_colour": {
+   "amber": 0.146,
+   "green": 0.026,
+   "red": 0.412
+  },
+  "n_by_colour": {
+   "green": 117,
+   "amber": 41,
+   "red": 17
+  },
+  "crosstab_lrflag_x_colour": {
+   "0": {
+    "green": 115,
+    "amber": 30,
+    "red": 6
+   },
+   "1": {
+    "green": 2,
+    "amber": 11,
+    "red": 11
+   }
+  },
+  "kappa_red_vs_flag": 0.47711904387482307,
+  "kappa_redamber_vs_flag": 0.42503890714162196,
+  "auroc_composite_full_history": 0.9005503144654088,
+  "auroc_lr_full_history_oof": 0.8974056603773585
+ }
+}

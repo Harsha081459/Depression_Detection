@@ -1,0 +1,65 @@
+{
+ "cuts": {
+  "self_blame": [
+   -1.1158965034121828,
+   -0.026130963886373433,
+   1.0750675495287463
+  ],
+  "helplessness": [
+   -1.1002735234422274,
+   -0.004713202884182479,
+   1.0752829576823817
+  ],
+  "isolation": [
+   -1.115111521921166,
+   -0.014296373160561808,
+   1.0937148473887381
+  ],
+  "family_strain": [
+   -1.1001163628643307,
+   -0.0006696584594846212,
+   1.091568821700052
+  ],
+  "emptiness": [
+   -1.1007789708290792,
+   -0.0031727826143593016,
+   1.0779660727879514
+  ]
+ },
+ "distressed_share": 0.08276933405150542,
+ "Q": [
+  "lg_self_blame",
+  "lg_helplessness",
+  "lg_isolation",
+  "lg_family_strain",
+  "lg_emptiness",
+  "distressed",
+  "lv_max",
+  "absolutist",
+  "polarity",
+  "flip",
+  "abs_jump",
+  "first_person",
+  "profanity",
+  "emo_anger",
+  "emo_anticipation",
+  "emo_disgust",
+  "emo_fear",
+  "emo_joy",
+  "emo_sadness",
+  "emo_surprise",
+  "emo_trust",
+  "emo_positive",
+  "emo_negative",
+  "night",
+  "polarity_sd",
+  "log_rate",
+  "log_med_gap",
+  "silence_after_distress",
+  "maxlv_self_blame",
+  "maxlv_helplessness",
+  "maxlv_isolation",
+  "maxlv_family_strain",
+  "maxlv_emptiness"
+ ]
+}
