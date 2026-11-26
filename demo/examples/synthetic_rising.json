@@ -1,0 +1,13 @@
+{"note": "Fictional writings made up by the team for the demo. Not from any real user.",
+ "writings": [
+  {"ts": "2026-01-02T15:10:00+05:30", "text": "Started the new semester today, my timetable looks okay and I bought a new notebook.", "is_comment": 0},
+  {"ts": "2026-01-05T18:40:00+05:30", "text": "Anyone know a good place for cheap noodles near campus? I am tired of the mess food.", "is_comment": 0},
+  {"ts": "2026-01-09T20:05:00+05:30", "text": "I missed the first quiz because I overslept. My fault really, I should have set an alarm.", "is_comment": 1},
+  {"ts": "2026-01-15T23:50:00+05:30", "text": "Group project meeting went badly. I feel like I always slow everyone down and they would be better without me.", "is_comment": 0},
+  {"ts": "2026-01-21T01:30:00+05:30", "text": "Can't sleep again. My parents called and we argued about grades for an hour, I hate being at home in my head.", "is_comment": 0},
+  {"ts": "2026-01-28T02:15:00+05:30", "text": "Nobody in my hostel even noticed I stayed in my room all weekend. I feel invisible.", "is_comment": 0},
+  {"ts": "2026-02-03T00:45:00+05:30", "text": "I keep trying to study but nothing changes, I always fail anyway. What is the point of trying.", "is_comment": 0},
+  {"ts": "2026-02-10T03:05:00+05:30", "text": "I just feel empty most days. I lie in bed and scroll and don't feel anything.", "is_comment": 0},
+  {"ts": "2026-02-18T02:40:00+05:30", "text": "Everything I do ruins things for the people around me. I am such a failure.", "is_comment": 1},
+  {"ts": "2026-02-25T01:20:00+05:30", "text": "Haven't talked to anyone in days. My dad screamed at me on the phone again. I can't do this anymore.", "is_comment": 0}
+ ]}

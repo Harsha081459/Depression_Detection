@@ -1,0 +1,34 @@
+{
+ "n": 105,
+ "outcomes": {
+  "TN": 93,
+  "FN": 5,
+  "TP": 5,
+  "FP": 2
+ },
+ "colour_rate": {
+  "green": 73,
+  "amber": 19,
+  "red": 13
+ },
+ "crosstab_refer_x_colour": {
+  "0": {
+   "amber": 19,
+   "green": 72,
+   "red": 7
+  },
+  "1": {
+   "amber": 0,
+   "green": 1,
+   "red": 6
+  }
+ },
+ "positive_rate_by_colour": {
+  "amber": 0.053,
+  "green": 0.041,
+  "red": 0.462
+ },
+ "kappa_red_vs_refer": 0.5620437956204379,
+ "kappa_redamber_vs_refer": 0.22264875239923232,
+ "note": "held-out was used once for the frozen model; this agreement table is a descriptive second look"
+}

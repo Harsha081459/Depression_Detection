@@ -1,0 +1,9 @@
+streamlit==1.50.0
+plotly==6.3.0
+pandas>=2.2
+pyarrow>=15
+numpy>=1.26
+scipy>=1.11
+scikit-learn==1.9.0
+xgboost>=2.0        # imported by scripts/analysis/final_indirect_pipeline.py (live rule features)
+pytest>=8
