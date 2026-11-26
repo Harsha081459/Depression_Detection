@@ -85,6 +85,21 @@ tabs = st.tabs(['0 Input', '1 Writings & signals', '2 Word features', '3 Chunks'
                 '5 Signs & scorecard', '6 Why', '7 Results'])
 
 
+def embed_python():
+    """Interpreter for embed_live.py (torch + transformers): EMBED_PYTHON, else a project .venv, else this Python.
+    Offline mode only when the three models are already in the Hugging Face cache (else they download once)."""
+    import os
+    cand = [os.environ.get('EMBED_PYTHON'), ROOT / '.venv' / 'Scripts' / 'python.exe', ROOT / '.venv' / 'bin' / 'python']
+    py = next((Path(c) for c in cand if c and Path(c).exists()), Path(sys.executable))
+    hub = Path(os.environ.get('HF_HOME', Path.home() / '.cache' / 'huggingface')) / 'hub'
+    need = ['models--sentence-transformers--all-mpnet-base-v2', 'models--SamLowe--roberta-base-go_emotions',
+            'models--BAAI--bge-large-en-v1.5']
+    env = dict(os.environ)
+    if all((hub / n).exists() for n in need):
+        env.update(HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')
+    return py, env
+
+
 def run_live(writings, use_qwen):
     import live
     from build_cases import build_one
@@ -94,14 +109,14 @@ def run_live(writings, use_qwen):
     rf = live.rule_features(writings)                              # same order as prepared rows (time order)
     texts = rf[~rf.disclosure].sort_values('ts_sec', kind='mergesort').text.tolist()   # = prepared row order
     (tmp / 'in.json').write_text(json.dumps(texts), encoding='utf-8')
-    py = ROOT / '.venv' / 'Scripts' / 'python.exe'
-    import os
-    env = dict(os.environ, HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')    # cached models only: no network calls
+    py, env = embed_python()
     r = subprocess.run([str(py), str(HERE / 'embed_live.py'), '--all', str(tmp / 'in.json'), str(tmp / 'x')],
-                       capture_output=True, text=True, env=env, timeout=300)
+                       capture_output=True, text=True, env=env, timeout=900)
     (tmp / 'in.json').unlink(missing_ok=True)
     if r.returncode != 0:
-        return {'error': 'embedding step failed (GPU environment .venv)'}
+        return {'error': 'The embedding step failed. It needs a Python with torch and transformers: install them '
+                         '(pip install torch transformers), or set EMBED_PYTHON to such an interpreter. '
+                         f'Details: {(r.stderr or "").strip().splitlines()[-1:] }'}
     mats = {'MPN': np.load(tmp / 'x_mpn.npy'), 'EMO': np.load(tmp / 'x_emo.npy'), 'BDI': np.load(tmp / 'x_bdi.npy')}
     mats['TXT'] = np.zeros((len(texts), 1024), np.float32)
     if use_qwen:
@@ -126,13 +141,14 @@ with tabs[0]:
     if src == 'Walkthrough case':
         wt = walkthrough()
         if not wt:
-            st.info('No walkthrough cases chosen yet (run demo/pick_walkthrough.py).')
+            st.info('Walkthrough and held-out users need the private eRisk data (not in the repository; see the '
+                    'README). Without it, use **Upload JSON** with a fictional example or **Type writings**.')
         else:
             name = st.selectbox('Case', list(wt), format_func=lambda k: f"{k}: {wt[k]['why']}")
             o = load_case(wt[name]['case_id'])
     elif src == 'Any held-out user':
         if I.empty:
-            st.warning('Run demo/build_cases_v11.py first.')
+            st.info('Held-out users need the private eRisk data (not in the repository; see the README).')
         else:
             show_lab = st.checkbox('Show true label and outcome (walkthrough only)', value=False)
             lab = I.apply(lambda r: f"{r.case_id}  ·  {r.n_writings} writings" + (f"  ·  {r.outcome}" if show_lab else ''), axis=1)
