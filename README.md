@@ -6,6 +6,8 @@ counselling conversation**. It is a screening flag for a person to review, **nev
 Team 6, AIX Project Elective, IIIT Bangalore, 2026–27: **Doppalapudi Harsha Vardhan, Munjikesh N, Polepalli Venkata Sai Prajwal**
 Supervisor: Dr. Anutosh Maitra · Task: [eRisk 2026 Task 2](https://erisk.irlab.org/) (early risk detection of depression)
 
+**Final report:** [`Final_Report_Team6_eRisk.pdf`](Final_Report_Team6_eRisk.pdf) (26 Nov 2026)
+
 > No user text, user identifiers or per-user outputs are in this repository. Labels are dataset task labels,
 > not clinical diagnoses.
 
@@ -91,6 +93,7 @@ demo/                    Streamlit app, frozen models (artifacts/), scoring + ex
   pipeline.py            v10 signals model, step by step
   scorecard.py           green / amber / red rules (dev percentiles)
   live.py, embed_live.py new writings: word features, Qwen (optional), transformer features
+  draft_paraphrases.py   paraphrases of walkthrough writings by the local Qwen (text never leaves the machine)
 research_v11/            final study: pre-registered candidate comparison, freeze script
   PREREGISTRATION.md     candidates and selection rule, written before the runs
   v11.py, compare.py     nested-CV harness and comparison (results/ = aggregate numbers)
@@ -98,7 +101,8 @@ research_v10/            v10 full-history chunk features and sequential evaluati
 scripts/analysis/        LLM scorer (frozen prompts), feature builders, earlier pipeline rounds, tests
 results/                 aggregate metrics and figures from earlier rounds
 docs/, output/reports/   decision log and the 10 Nov findings report
-Progress_Report_Team6_eRisk.pdf   progress report (12 Nov)
+Final_Report_Team6_eRisk.pdf      final report (26 Nov): method, results, walkthrough cases
+Progress_Report_Team6_eRisk.pdf   earlier progress report (12 Nov)
 ```
 
 ## Reproducing the study
